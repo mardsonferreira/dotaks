@@ -6,6 +6,7 @@ class Task extends Model{
             {
                 description: Sequelize.STRING,
                 color: Sequelize.STRING,
+                archive: Sequelize.BOOLEAN,
             },
             {
                 sequelize
