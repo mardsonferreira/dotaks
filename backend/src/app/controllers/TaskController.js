@@ -30,7 +30,7 @@ class TaskController {
         const { id } = req.params;
 
         const task = await Task.findOne({
-            where: { id: id},
+            where: { id: id, archive: false},
             include: [
                 {
                     model: User,
