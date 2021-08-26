@@ -8,6 +8,12 @@ A to-do list app.
  - <a href="https://yarnpkg.com/">Yarn</a>
  - <a href="https://www.docker.com/">Docker</a>
  
+ <h3> Backend </h3>
+ 
+ **Setting up database**
+ - Create postgres image: docker run --name database_name -e POSTGRES_PASSWORD=your_password -d postgres.
+ - Run image: docker start database_name.
+ 
  **Getting the project**
  - Clone the project and go to the folder: `$ git clone https://github.com/mardsonferreira/dotaks.git && cd dotaks`.
  
