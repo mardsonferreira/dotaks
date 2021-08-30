@@ -1,0 +1,47 @@
+{
+    "extends": [
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jest/recommended",
+        "plugin:prettier/recommended",
+        "prettier",
+        "prettier/prettier"
+    ],
+    "plugins": ["react", "@typescript-eslint", "jest", "prettier"],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true
+    },
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "react/jsx-filename-extension": [
+            2,
+            { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+        ],
+        "import/prefer-default-export": "off",
+        "react/state-in-constructor": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-props-no-spreading": "off",
+        "no-param-reassign": "off",
+        "no-underscore-dangle": "off",
+        "camelcase": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/extensions": "off"
+    }
+}
