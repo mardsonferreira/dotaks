@@ -1,9 +1,20 @@
-import React from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 
 // import { Container } from './styles';
 
 const SignIn: React.FC = () => {
-    return <h1>Sign In</h1>
-}
+    return (
+        <>
+            <form>
+                <input type="email" placeholder="E-mail" />
+                <input type="password" placeholder="Password" />
 
-export default SignIn
+                <button type="submit">Sign In</button>
+                <Link to="/register">Sing Up for free</Link>
+            </form>
+        </>
+    );
+};
+
+export default SignIn;
