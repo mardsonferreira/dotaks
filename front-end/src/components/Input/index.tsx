@@ -31,6 +31,7 @@ export default function Input({ name, label, ...rest }: InputProps) {
                 id={fieldName}
                 ref={inputRef}
                 defaultValue={defaultValue}
+                className={error ? "has-error" : ""}
                 {...rest}
             />
             {error && <span>{error}</span>}
