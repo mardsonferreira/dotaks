@@ -42,16 +42,16 @@ export const Content = styled.div`
         button {
             margin: 5px 0 0;
             height: 44px;
-            background: #5ccb9a;
+            background: #ffda44;
             font-weight: bold;
-            color: #040404;
+            color: #2d2c2b;
             border: 0;
             border-radius: 4px;
             font-size: 16px;
             transition: background 0.2s;
 
             &:hover {
-                background: ${darken(0.03, "#5ccb9a")};
+                background: ${darken(0.03, "#ffda44")};
             }
         }
 
@@ -65,5 +65,26 @@ export const Content = styled.div`
                 opacity: 1;
             }
         }
+    }
+`;
+
+export const Logo = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-bottom: 16px;
+
+    strong {
+        font-size: 28px;
+        color: #ffe4c4;
+
+        margin-top: 8px;
+    }
+
+    img {
+        width: 64px;
+        height: 64px;
     }
 `;

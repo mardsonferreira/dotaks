@@ -1,13 +1,21 @@
 import React from "react";
 
+import logo from "../../../assets/logo.svg";
+
 import { AuthLayoutProps } from "./types";
 
-import { Wrapper, Content } from "./styles";
+import { Wrapper, Content, Logo } from "./styles";
 
 const AuthLayout: React.FC = ({ children }: AuthLayoutProps) => {
     return (
         <Wrapper>
-            <Content>{children}</Content>
+            <Content>
+                <Logo>
+                    <img src={logo} alt="Dotaks" />
+                    <strong>DoTaks</strong>
+                </Logo>
+                {children}
+            </Content>
         </Wrapper>
     );
 };
