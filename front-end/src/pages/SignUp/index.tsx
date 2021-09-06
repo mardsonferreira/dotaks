@@ -1,56 +1,52 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { SubmitHandler, FormHandles } from "@unform/core";
-import { Form } from "@unform/web";
-import Input from "../../components/Input";
-import * as Yup from "yup";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { SignUpFormData } from "./types";
+import Input from "../../components/Input";
+
+import SignUpSchema, { SignUpForm } from "./types";
 
 const SignUp: React.FC = () => {
-    const formRef = useRef<FormHandles>(null);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SignUpForm>({
+        resolver: yupResolver(SignUpSchema),
+    });
 
-    const handleSubmit: SubmitHandler<SignUpFormData> = async (data) => {
-        try {
-            formRef.current?.setErrors({});
-
-            const schema = Yup.object().shape({
-                name: Yup.string().required("Required field"),
-                email: Yup.string()
-                    .email("Invalid E-mail")
-                    .required("Required field"),
-                password: Yup.string().min(6).required("Required field"),
-            });
-
-            await schema.validate(data, {
-                abortEarly: false,
-            });
-
-            console.log(data);
-        } catch (err) {
-            const validationErrors = {};
-            if (err instanceof Yup.ValidationError) {
-                err.inner.forEach((error) => {
-                    if (error && error.path) {
-                        validationErrors[error.path] = error.message;
-                    }
-                });
-
-                formRef.current?.setErrors(validationErrors);
-            }
-        }
+    const submitForm: SubmitHandler<SignUpForm> = (data) => {
+        console.log(data);
     };
 
     return (
         <>
-            <Form ref={formRef} onSubmit={handleSubmit}>
-                <Input name="name" placeholder="Full name" />
-                <Input name="email" type="email" placeholder="E-mail" />
-                <Input name="password" type="password" placeholder="Password" />
+            <form onSubmit={handleSubmit(submitForm)}>
+                <Input
+                    name="name"
+                    placeholder="Full name"
+                    register={register}
+                    error={errors.name}
+                />
+                <Input
+                    name="email"
+                    type="email"
+                    placeholder="E-mail"
+                    register={register}
+                    error={errors.email}
+                />
+                <Input
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    register={register}
+                    error={errors.password}
+                />
 
                 <button type="submit">Sign Up</button>
                 <Link to="/">I already have an account.</Link>
-            </Form>
+            </form>
         </>
     );
 };
