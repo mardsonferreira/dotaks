@@ -5,6 +5,8 @@ import { RouteComponentProps } from "react-router";
 import AuthLayout from "../pages/_layouts/auth";
 import DefaultLayout from "../pages/_layouts/default";
 
+import store from "../store";
+
 type RouteProps = {
     component: React.FC;
     isPrivate?: boolean;
@@ -15,7 +17,7 @@ const RouteWrapper: React.FC<RouteProps> = ({
     isPrivate,
     ...rest
 }: RouteProps) => {
-    const signed = false;
+    const { signed } = store.getState().auth;
 
     if (!signed && isPrivate) {
         return <Redirect to="/" />;

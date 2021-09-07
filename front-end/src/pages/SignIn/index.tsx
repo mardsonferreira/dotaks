@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import Input from "../../components/Input";
+import { signInRequest } from "../../store/modules/auth/actions";
 
 import SignInSchema, { SignInForm } from "./types";
 
 const SignIn: React.FC = () => {
+    const dispatch = useDispatch();
+
     const {
         register,
         handleSubmit,
@@ -17,7 +21,7 @@ const SignIn: React.FC = () => {
     });
 
     const submitForm: SubmitHandler<SignInForm> = (data) => {
-        console.log(data);
+        dispatch(signInRequest(data));
     };
 
     return (
