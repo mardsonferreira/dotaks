@@ -12,7 +12,7 @@ import { store, persistor } from "./store";
 
 import GlobalStyle from "./styles/global";
 
-export default function App() {
+const App: React.FC = () => {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
@@ -25,4 +25,6 @@ export default function App() {
             </PersistGate>
         </Provider>
     );
-}
+};
+
+export default App;

@@ -10,8 +10,15 @@ const INITIAL_STATE: AuthState = {
 
 const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case AuthTypes.SIGN_IN_REQUEST:
+            return { ...state, loading: true };
         case AuthTypes.SIGN_IN_SUCCESS:
-            return { ...state, token: action.payload.token, signed: true };
+            return {
+                ...state,
+                token: action.payload.token,
+                signed: true,
+                loading: false,
+            };
         case AuthTypes.SIGN_FAILURE:
             return { ...state, loading: false };
         default:
