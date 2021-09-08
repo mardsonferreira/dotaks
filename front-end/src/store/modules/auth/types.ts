@@ -1,3 +1,5 @@
+import { User } from "../user/types";
+
 /**
  * Action types
  */
@@ -14,12 +16,6 @@ export interface SignInRequestPayload {
     email: string;
     password: string;
 }
-
-type User = {
-    id: number;
-    name: string;
-    email: string;
-};
 
 export interface SignInSuccessPayload {
     token: string;
