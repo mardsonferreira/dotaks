@@ -1,4 +1,5 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
+import { toast } from "react-toastify";
 import { AnyAction } from "redux";
 
 import { AuthTypes } from "./types";
@@ -20,7 +21,7 @@ export function* signIn({ payload }: AnyAction) {
         const { token, user } = response.data;
 
         if (!user) {
-            console.log("error");
+            toast.error("User not found!");
             return;
         }
 
@@ -28,6 +29,7 @@ export function* signIn({ payload }: AnyAction) {
 
         history.push("/dashboard");
     } catch (err) {
+        toast.error("Authentication fails!");
         yield put(signInFailure());
     }
 }
