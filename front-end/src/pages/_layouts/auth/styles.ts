@@ -3,7 +3,7 @@ import { darken } from "polished";
 
 export const Wrapper = styled.div`
     height: 100%;
-    background: #303654;
+    background: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@ export const Content = styled.div`
         flex-direction: column;
 
         input {
-            background: rgba(250, 250, 250, 0.8);
+            background: rgba(0, 0, 0, 0.1);
             border: 0;
             border-radius: 4px;
             height: 44px;
@@ -56,7 +56,7 @@ export const Content = styled.div`
         }
 
         a {
-            color: #fff;
+            color: #000;
             margin-top: 15px;
             font-size: 16px;
             opacity: 0.8;
@@ -78,7 +78,7 @@ export const Logo = styled.div`
 
     strong {
         font-size: 28px;
-        color: #ffe4c4;
+        color: #000;
 
         margin-top: 8px;
     }
