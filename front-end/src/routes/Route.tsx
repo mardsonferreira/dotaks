@@ -20,15 +20,18 @@ const RouteWrapper: React.FC<RouteProps> = ({
     const { signed } = store.getState().auth;
 
     if (!signed && isPrivate) {
+        console.log("Redirecting to home");
         return <Redirect to="/" />;
     }
 
     if (signed && !isPrivate) {
+        console.log("Redirecting to dashboard");
         return <Redirect to="/dashboard" />;
     }
 
     const Layout = signed ? DefaultLayout : AuthLayout;
 
+    console.log(rest);
     return (
         <Route
             {...rest}

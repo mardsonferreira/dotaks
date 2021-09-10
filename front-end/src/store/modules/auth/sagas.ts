@@ -34,4 +34,24 @@ export function* signIn({ payload }: AnyAction) {
     }
 }
 
-export default all([takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn)]);
+export function* signUp({ payload }: AnyAction) {
+    try {
+        const { name, email, password } = payload;
+
+        yield call(api.post, "users", {
+            name,
+            email,
+            password,
+        });
+
+        history.push("/");
+    } catch (err) {
+        toast.error("Create account failed!");
+        yield put(signInFailure());
+    }
+}
+
+export default all([
+    takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn),
+    takeLatest(AuthTypes.SIGN_UP_REQUEST, signUp),
+]);
