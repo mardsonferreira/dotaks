@@ -1,6 +1,13 @@
-import { AuthState } from "./modules/auth/types";
-import { UserState } from "./modules/user/types";
+import { User } from "./modules/user/types";
+export interface AuthState {
+    token: string | null;
+    signed: boolean;
+    loading: boolean;
+}
 
+export interface UserState {
+    profile: User | null;
+}
 export interface ApplicationState {
     auth: AuthState;
     user: UserState;

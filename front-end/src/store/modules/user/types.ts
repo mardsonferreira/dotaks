@@ -3,7 +3,3 @@ export interface User {
     name: string;
     email: string;
 }
-
-export interface UserState {
-    profile: User | null;
-}

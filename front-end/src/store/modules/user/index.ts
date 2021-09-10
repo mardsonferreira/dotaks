@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
 
 import { AuthTypes } from "../auth/types";
-import { UserState } from "./types";
+import { UserState } from "../../types";
 
 const INITIAL_STATE: UserState = {
     profile: null,

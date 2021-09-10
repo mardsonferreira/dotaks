@@ -1,7 +1,12 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import { toast } from "react-toastify";
 
-import { AuthTypes, SignInRequest, SignUpRequest } from "./types";
+import {
+    AuthTypes,
+    SignInRequest,
+    SignUpRequest,
+    PersistRequest,
+} from "./types";
 
 import api from "../../../services/api";
 import history from "../../../services/history";
@@ -23,6 +28,8 @@ export function* signIn({ payload }: SignInRequest) {
             toast.error("User not found!");
             return;
         }
+
+        api.defaults.headers.Authorization = `Bearer ${token}`;
 
         yield put(signInSuccess({ token, user }));
 
@@ -50,7 +57,20 @@ export function* signUp({ payload }: SignUpRequest) {
     }
 }
 
+export function setToken({ payload }: PersistRequest) {
+    if (!payload) {
+        return;
+    }
+
+    const { token } = payload.auth;
+
+    if (token) {
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+    }
+}
+
 export default all([
+    takeLatest("persist/REHYDRATE", setToken),
     takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn),
     takeLatest(AuthTypes.SIGN_UP_REQUEST, signUp),
 ]);

@@ -1,9 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react";
+import api from "../../services/api";
 
 // import { Container } from './styles';
 
 const Dashboard: React.FC = () => {
-    return <h1>Dashboard</h1>
-}
+    useEffect(() => {
+        async function loadTasks() {
+            const tasks = await api.get("/tasks/1");
+            console.log(tasks);
+        }
 
-export default Dashboard
+        loadTasks();
+    }, []);
+
+    return <h1>Dashboard</h1>;
+};
+
+export default Dashboard;

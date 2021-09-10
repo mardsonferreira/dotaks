@@ -1,4 +1,5 @@
 import { Action } from "redux";
+import { ApplicationState } from "../../types";
 import { User } from "../user/types";
 
 /**
@@ -9,6 +10,7 @@ export enum AuthTypes {
     SIGN_UP_REQUEST = "@auth/SIGN_UP_REQUEST",
     SIGN_IN_SUCCESS = "@auth/SIGN_IN_SUCCESS",
     SIGN_FAILURE = "@auth/SIGN_FAILURE",
+    PERSIST_REHYDRATE = "persist/REHYDRATE",
 }
 
 export interface SignInRequestPayload {
@@ -37,8 +39,7 @@ export interface SignUpRequest {
     payload: SignUpRequestPayload;
 }
 
-export interface AuthState {
-    token: string | null;
-    signed: boolean;
-    loading: boolean;
+export interface PersistRequest extends Action {
+    type: typeof AuthTypes.PERSIST_REHYDRATE;
+    payload: ApplicationState;
 }
