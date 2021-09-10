@@ -1,15 +1,14 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import { toast } from "react-toastify";
-import { AnyAction } from "redux";
 
-import { AuthTypes } from "./types";
+import { AuthTypes, SignInRequest, SignUpRequest } from "./types";
 
 import api from "../../../services/api";
 import history from "../../../services/history";
 
 import { signInSuccess, signInFailure } from "./actions";
 
-export function* signIn({ payload }: AnyAction) {
+export function* signIn({ payload }: SignInRequest) {
     try {
         const { email, password } = payload;
 
@@ -34,7 +33,7 @@ export function* signIn({ payload }: AnyAction) {
     }
 }
 
-export function* signUp({ payload }: AnyAction) {
+export function* signUp({ payload }: SignUpRequest) {
     try {
         const { name, email, password } = payload;
 

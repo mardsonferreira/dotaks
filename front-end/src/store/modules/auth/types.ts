@@ -1,3 +1,4 @@
+import { Action } from "redux";
 import { User } from "../user/types";
 
 /**
@@ -15,6 +16,11 @@ export interface SignInRequestPayload {
     password: string;
 }
 
+export interface SignInRequest extends Action {
+    type: typeof AuthTypes.SIGN_IN_REQUEST;
+    payload: SignInRequestPayload;
+}
+
 export interface SignInSuccessPayload {
     token: string;
     user: User;
@@ -24,6 +30,11 @@ export interface SignUpRequestPayload {
     name: string;
     email: string;
     password: string;
+}
+
+export interface SignUpRequest {
+    type: typeof AuthTypes.SIGN_UP_REQUEST;
+    payload: SignUpRequestPayload;
 }
 
 export interface AuthState {
