@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -7,9 +9,12 @@ import Input from "../../components/Input";
 import ProfileSchema, { ProfileForm } from "./types";
 import { useAppSelector, UserState } from "../../store/types";
 
+import { UpdateProfileRequest } from "../../store/modules/user/action";
+
 import { Container } from "./styles";
 
 const Profile: React.FC = () => {
+    const dispatch = useDispatch();
     const userInfo: UserState = useAppSelector((state) => state.user);
 
     const {
@@ -21,7 +26,7 @@ const Profile: React.FC = () => {
     });
 
     const submitForm: SubmitHandler<ProfileForm> = (data) => {
-        console.log(data);
+        dispatch(UpdateProfileRequest(data));
     };
 
     return (
@@ -50,7 +55,7 @@ const Profile: React.FC = () => {
                     type="password"
                     placeholder="Current Password"
                     register={register}
-                    error={errors.password}
+                    error={errors.oldPassword}
                 />
 
                 <Input
@@ -66,7 +71,7 @@ const Profile: React.FC = () => {
                     type="password"
                     placeholder="Confirm Password"
                     register={register}
-                    error={errors.password}
+                    error={errors.confirmPassword}
                 />
 
                 <button type="submit">Update</button>
