@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { ApplicationState } from "../../types";
+import { RootState } from "../../types";
 import { User } from "../user/types";
 
 /**
@@ -41,5 +41,5 @@ export interface SignUpRequest {
 
 export interface PersistRequest extends Action {
     type: typeof AuthTypes.PERSIST_REHYDRATE;
-    payload: ApplicationState;
+    payload: RootState;
 }

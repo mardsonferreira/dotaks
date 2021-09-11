@@ -5,12 +5,12 @@ import createSagaMiddleware from "redux-saga";
 import rootReducer from "./modules/rootReducer";
 import rootSaga from "./modules/rootSaga";
 
-import { ApplicationState } from "./types";
+import { RootState } from "./types";
 import persistReducers from "./persistReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store: Store<ApplicationState> = createStore(
+const store: Store<RootState> = createStore(
     persistReducers(rootReducer),
     applyMiddleware(sagaMiddleware)
 );

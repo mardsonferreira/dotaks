@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -8,13 +8,11 @@ import Input from "../../components/Input";
 import { signInRequest } from "../../store/modules/auth/actions";
 
 import SignInSchema, { SignInForm } from "./types";
-import { ApplicationState } from "../../store/types";
+import { useAppSelector } from "../../store/types";
 
 const SignIn: React.FC = () => {
     const dispatch = useDispatch();
-    const loading = useSelector<ApplicationState>(
-        (state) => state.auth.loading
-    );
+    const loading = useAppSelector((state) => state.auth.loading);
 
     const {
         register,

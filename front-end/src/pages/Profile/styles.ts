@@ -1,22 +1,14 @@
 import styled from "styled-components";
 import { darken } from "polished";
 
-export const Wrapper = styled.div`
-    height: 100%;
-    background: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-export const Content = styled.div`
-    width: 100%;
-    max-width: 315px;
-    text-align: center;
+export const Container = styled.div`
+    max-width: 600px;
+    margin: 50px auto;
 
     form {
         display: flex;
         flex-direction: column;
+        margin-top: 30px;
 
         input {
             background: rgba(0, 0, 0, 0.1);
@@ -33,10 +25,17 @@ export const Content = styled.div`
         }
 
         span {
-            color: #d10839;
+            color: #fb6f91;
             align-self: flex-start;
             margin: 0 0 10px;
             font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #b6b3b3;
+            margin: 10px 0 20px;
         }
 
         button {
@@ -44,7 +43,7 @@ export const Content = styled.div`
             height: 44px;
             background: #ffda44;
             font-weight: bold;
-            color: #2d2c2b;
+            color: #000;
             border: 0;
             border-radius: 4px;
             font-size: 16px;
@@ -54,37 +53,22 @@ export const Content = styled.div`
                 background: ${darken(0.03, "#ffda44")};
             }
         }
+    }
 
-        a {
-            color: #000;
-            margin-top: 15px;
-            font-size: 16px;
-            opacity: 0.8;
+    > button {
+        width: 100%;
+        margin: 10px 0 0;
+        height: 44px;
+        background: #d10839;
+        font-weight: bold;
+        color: #fff;
+        border: 0;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background 0.2s;
 
-            &:hover {
-                opacity: 1;
-            }
+        &:hover {
+            background: ${darken(0.08, "#d10839")};
         }
-    }
-`;
-
-export const Logo = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-    margin-bottom: 16px;
-
-    strong {
-        font-size: 28px;
-        color: #000;
-
-        margin-top: 8px;
-    }
-
-    img {
-        width: 64px;
-        height: 64px;
     }
 `;

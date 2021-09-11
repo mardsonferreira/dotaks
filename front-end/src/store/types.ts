@@ -1,3 +1,4 @@
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { User } from "./modules/user/types";
 export interface AuthState {
     token: string | null;
@@ -8,7 +9,9 @@ export interface AuthState {
 export interface UserState {
     profile: User | null;
 }
-export interface ApplicationState {
+export interface RootState {
     auth: AuthState;
     user: UserState;
 }
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
