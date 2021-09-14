@@ -20,6 +20,7 @@ const Profile: React.FC = () => {
 
     const {
         register,
+        setValue,
         handleSubmit,
         formState: { errors },
     } = useForm<ProfileForm>({
@@ -27,16 +28,16 @@ const Profile: React.FC = () => {
     });
 
     const submitForm: SubmitHandler<ProfileForm> = (data) => {
-        console.log(data);
-        // dispatch(UpdateProfileRequest(data));
+        dispatch(UpdateProfileRequest(data));
     };
 
     return (
         <Container>
             <form onSubmit={handleSubmit(submitForm)}>
                 <AvatarInput
-                    name="avatar_id"
+                    name="avatarId"
                     register={register}
+                    setValue={setValue}
                     initialValue={userInfo.profile?.avatar}
                 />
                 <Input

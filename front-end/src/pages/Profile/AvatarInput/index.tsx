@@ -1,34 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
 
 import avatar from "../../../assets/avatar-default.jpg";
 
 import { AvatarProps } from "./types";
 
-import { Container } from "./styles";
 import api from "../../../services/api";
+
+import { Container } from "./styles";
 
 const AvatarInput: React.FC<AvatarProps> = ({
     name,
     register,
+    setValue,
     initialValue,
 }) => {
     const [preview, setPreview] = useState(initialValue && initialValue.url);
     const [file, setFile] = useState(initialValue && initialValue.id);
+
+    useEffect(() => {
+        register("avatarId");
+        setValue("avatarId", file);
+    }, [file]);
 
     async function handleChange(e) {
         const data = new FormData();
 
         data.append("file", e.target.files[0]);
 
-        // const response = await api.post("files", data);
+        const response = await api.post("files", data);
 
-        // const { id, url } = response.data;
+        const { id, url } = response.data;
 
-        setFile(1);
-        setPreview(
-            "http://localhost:3333/files/256e1643ee8f055cf9fe0a22e4deadd9.jpg"
-        );
+        setFile(id);
+        setPreview(url);
     }
 
     return (
@@ -37,7 +41,6 @@ const AvatarInput: React.FC<AvatarProps> = ({
                 <img src={preview || avatar} alt="" />
 
                 <input
-                    {...register(name)}
                     id="avatar"
                     type="file"
                     accept="image/*"

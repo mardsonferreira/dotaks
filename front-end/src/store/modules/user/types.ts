@@ -27,6 +27,7 @@ export interface UpdateProfileRequestPayload {
     oldPassword: string;
     password: string;
     confirmPassword: string;
+    avatarId: number | null;
 }
 
 export interface UpdateProfileSuccessPayload {
@@ -35,6 +36,7 @@ export interface UpdateProfileSuccessPayload {
     oldPassword: string;
     password: string;
     confirmPassword: string;
+    avatarId: number | null;
 }
 
 /**

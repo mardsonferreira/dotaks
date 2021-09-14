@@ -6,6 +6,7 @@ export interface ProfileForm {
     oldPassword: string;
     password: string;
     confirmPassword: string;
+    avatarId: number | null;
 }
 
 const ProfileSchema = Yup.object().shape({
