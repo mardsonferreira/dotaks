@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Input from "../../components/Input";
+import AvatarInput from "./AvatarInput";
 
 import ProfileSchema, { ProfileForm } from "./types";
 import { useAppSelector, UserState } from "../../store/types";
@@ -26,12 +27,18 @@ const Profile: React.FC = () => {
     });
 
     const submitForm: SubmitHandler<ProfileForm> = (data) => {
-        dispatch(UpdateProfileRequest(data));
+        console.log(data);
+        // dispatch(UpdateProfileRequest(data));
     };
 
     return (
         <Container>
             <form onSubmit={handleSubmit(submitForm)}>
+                <AvatarInput
+                    name="avatar_id"
+                    register={register}
+                    initialValue={userInfo.profile?.avatar}
+                />
                 <Input
                     name="name"
                     placeholder="Full name"
@@ -67,7 +74,7 @@ const Profile: React.FC = () => {
                 />
 
                 <Input
-                    name="ConfirmPassword"
+                    name="confirmPassword"
                     type="password"
                     placeholder="Confirm Password"
                     register={register}

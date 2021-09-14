@@ -1,8 +1,15 @@
 import { Action } from "redux";
+
+export interface Avatar {
+    id: number;
+    path: string;
+    url: string;
+}
 export interface User {
     id: number;
     name: string;
     email: string;
+    avatar: Avatar | null;
 }
 
 export enum UserActions {
