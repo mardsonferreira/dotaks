@@ -11,6 +11,7 @@ export enum AuthTypes {
     SIGN_IN_SUCCESS = "@auth/SIGN_IN_SUCCESS",
     SIGN_FAILURE = "@auth/SIGN_FAILURE",
     PERSIST_REHYDRATE = "persist/REHYDRATE",
+    SIGN_OUT = "@auth/sign_out",
 }
 
 export interface SignInRequestPayload {

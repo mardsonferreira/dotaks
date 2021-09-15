@@ -6,7 +6,11 @@ import { FiMenu } from "react-icons/fi";
 
 import { Container, Content, Profile } from "./styles";
 
+import { useAppSelector, UserState } from "../../store/types";
+
 const Header: React.FC = () => {
+    const userInfo: UserState = useAppSelector((state) => state.user);
+
     return (
         <Container>
             <Content>
@@ -18,7 +22,10 @@ const Header: React.FC = () => {
                 <aside>
                     <Profile>
                         <Link to="/profile">
-                            <img src={profile} alt="Avatar" />
+                            <img
+                                src={userInfo.profile?.avatar?.url || profile}
+                                alt="Avatar"
+                            />
                         </Link>
                     </Profile>
                 </aside>

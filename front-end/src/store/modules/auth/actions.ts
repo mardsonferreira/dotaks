@@ -16,3 +16,5 @@ export const signInFailure = () => action(AuthTypes.SIGN_FAILURE);
 
 export const signUpRequest = (data: SignUpRequestPayload) =>
     action(AuthTypes.SIGN_UP_REQUEST, data);
+
+export const signOutRequest = () => action(AuthTypes.SIGN_OUT);

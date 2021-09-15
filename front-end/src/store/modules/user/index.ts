@@ -13,8 +13,9 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
         case AuthTypes.SIGN_IN_SUCCESS:
             return { ...state, profile: action.payload.user };
         case UserActions.UPDATE_PROFILE_SUCCESS:
-            console.log("ACTION", action.payload);
             return { ...state, profile: action.payload };
+        case AuthTypes.SIGN_OUT:
+            return { ...state, profile: null };
         default:
             return state;
     }

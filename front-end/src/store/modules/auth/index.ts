@@ -22,6 +22,8 @@ const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
             };
         case AuthTypes.SIGN_FAILURE:
             return { ...state, loading: false };
+        case AuthTypes.SIGN_OUT:
+            return { ...state, token: null, signed: false };
         default:
             return state;
     }

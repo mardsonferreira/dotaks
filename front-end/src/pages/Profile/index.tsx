@@ -11,6 +11,7 @@ import ProfileSchema, { ProfileForm } from "./types";
 import { useAppSelector, UserState } from "../../store/types";
 
 import { UpdateProfileRequest } from "../../store/modules/user/action";
+import { signOutRequest } from "../../store/modules/auth/actions";
 
 import { Container } from "./styles";
 
@@ -30,6 +31,10 @@ const Profile: React.FC = () => {
     const submitForm: SubmitHandler<ProfileForm> = (data) => {
         dispatch(UpdateProfileRequest(data));
     };
+
+    function handleSignOut() {
+        dispatch(signOutRequest());
+    }
 
     return (
         <Container>
@@ -85,7 +90,9 @@ const Profile: React.FC = () => {
                 <button type="submit">Update</button>
             </form>
 
-            <button type="button">Log out</button>
+            <button type="button" onClick={handleSignOut}>
+                Log out
+            </button>
         </Container>
     );
 };
